@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>common - Checkstyle report</title>
+    <link>http://mbeiter.github.io/audit4j/docs/1.0/common/</link>
+    <description>common - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2015 - 2016 Michael Beiter <michael@beiter.org></copyright>
+    <item>
+      <title>File: 23,
+             Errors: 0,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.Field.java">org/beiter/michael/eaudit4j/common/Field.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.Encodings.java">org/beiter/michael/eaudit4j/common/Encodings.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.impl.ExtendedAuditEvent.java">org/beiter/michael/eaudit4j/common/impl/ExtendedAuditEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.propsbuilder.package-info.java">org/beiter/michael/eaudit4j/common/propsbuilder/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.impl.package-info.java">org/beiter/michael/eaudit4j/common/impl/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.Reversible.java">org/beiter/michael/eaudit4j/common/Reversible.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.AuditException.java">org/beiter/michael/eaudit4j/common/AuditException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.ExtendedEvent.java">org/beiter/michael/eaudit4j/common/ExtendedEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.propsbuilder.MapBasedCommonPropsBuilder.java">org/beiter/michael/eaudit4j/common/propsbuilder/MapBasedCommonPropsBuilder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.AuditErrorConditions.java">org/beiter/michael/eaudit4j/common/AuditErrorConditions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.Audit.java">org/beiter/michael/eaudit4j/common/Audit.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.impl.SyncAudit.java">org/beiter/michael/eaudit4j/common/impl/SyncAudit.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.impl.EventBuilder.java">org/beiter/michael/eaudit4j/common/impl/EventBuilder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.ProcessingObjects.java">org/beiter/michael/eaudit4j/common/ProcessingObjects.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.impl.EventField.java">org/beiter/michael/eaudit4j/common/impl/EventField.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.AuditFactory.java">org/beiter/michael/eaudit4j/common/AuditFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.CommonProperties.java">org/beiter/michael/eaudit4j/common/CommonProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.Processor.java">org/beiter/michael/eaudit4j/common/Processor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.Event.java">org/beiter/michael/eaudit4j/common/Event.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.impl.AuditEvent.java">org/beiter/michael/eaudit4j/common/impl/AuditEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.FactoryException.java">org/beiter/michael/eaudit4j/common/FactoryException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.package-info.java">org/beiter/michael/eaudit4j/common/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mbeiter.github.io/audit4j/docs/1.0/common//checkstyle.html#org.beiter.michael.eaudit4j.common.ProcessorFactory.java">org/beiter/michael/eaudit4j/common/ProcessorFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
