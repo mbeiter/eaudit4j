@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.beiter.michael.eaudit4j</groupId>
+        <artifactId>processors</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+	<groupId>org.beiter.michael.eaudit4j.processors</groupId>
+    <artifactId>jdbc</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>jdbc</name>
+    <description>
+        This module is part of the eAudit4j audit library, providing a simple and pluggable
+		solution for auditing in Java. 
+		
+		This particular Maven module provides a set of audit processors that persists audit
+        events using JDBC. Depending on the processor implementation, the JDBC connection can
+        be instantiated from a configurable database connection pool, a JNDI name, or a data source.
+        Once persisted, the event is passed on without modification.
+    </description>
+    <url>http://mbeiter.github.io/audit4j/docs/${project.version}/${project.artifactId}/</url>
+
+    <dependencies>
+        <!-- Included dependencies -->
+        <dependency>
+            <groupId>org.beiter.michael.eaudit4j</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.beiter.michael.util</groupId>
+            <artifactId>db</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- Provided dependencies -->
+        <dependency>
+            <groupId>net.sourceforge.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <url>https://github.com/mbeiter/audit4j</url>
+        <connection>scm:git:git://github.com/mbeiter/audit4j.git</connection>
+        <developerConnection>scm:git:git@github.com:mbeiter/audit4j.git</developerConnection>
+    </scm>
+
+    <!--
+      Required for 'mvn site/ to build the links correctly. Requires the URL of this module to be set to:
+      <url>http://mbeiter.github.io/audit4j/docs/${project.version}/${project.artifactId}/</url>
+    -->
+    <distributionManagement>
+        <site>
+            <id>github.gh-pages</id>
+            <url>${project.url}</url>
+        </site>
+    </distributionManagement>
+</project>

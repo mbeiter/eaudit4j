@@ -1,0 +1,1 @@
+This file is part of eAudit4j, a library for creating pluggable auditing solutions.
