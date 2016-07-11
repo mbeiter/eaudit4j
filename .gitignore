@@ -11,3 +11,4 @@ dep_current.txt
 .project
 .settings
 .toDelete
+.data
