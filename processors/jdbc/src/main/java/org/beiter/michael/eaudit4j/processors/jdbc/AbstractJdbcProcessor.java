@@ -447,10 +447,8 @@ public abstract class AbstractJdbcProcessor
             // will actually be executed, and closing the connection here immediately in the non-error case prevents
             // resource leaks. Repeating the same code below in the finalizer is just a safety net.
             con.setAutoCommit(autoCommit);
-            if (!psEvent.isClosed()) {
-                psEvent.close();
-            }
-            if (psIndex != null && !psIndex.isClosed()) {
+            psEvent.close();
+            if (psIndex != null) {
                 psIndex.close();
             }
             if (!con.isClosed()) {
@@ -484,10 +482,10 @@ public abstract class AbstractJdbcProcessor
                 if (!con.isClosed() && con.getAutoCommit() != autoCommit) {
                     con.setAutoCommit(autoCommit);
                 }
-                if (psEvent != null && !psEvent.isClosed()) {
+                if (psEvent != null) {
                     psEvent.close();
                 }
-                if (psIndex != null && !psIndex.isClosed()) {
+                if (psIndex != null) {
                     psIndex.close();
                 }
                 if (!con.isClosed()) {
