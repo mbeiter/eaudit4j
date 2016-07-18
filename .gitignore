@@ -10,3 +10,4 @@ dep_current.txt
 .classpath
 .project
 .settings
+.toDelete

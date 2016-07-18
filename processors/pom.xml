@@ -28,6 +28,7 @@
 		<module>eventId</module>
         <module>slf4j</module>
         <module>jdbc</module>
+        <module>cassandra</module>
     </modules>
 
     <scm>
