@@ -40,32 +40,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-/**
- * This class specifies properties specific to the Cassandra Processor.
- */
-// suppress warnings about the long variable names
-@SuppressWarnings("PMD.LongVariable")
 public class CassandraProperties {
 
     /**
-     * @see CassandraProperties#setInsertEventCqlStmt(String)
+     * @see CassandraProperties#setInsertEventSqlStmt(String)
      */
-    private String insertEventCqlStmt;
-
-    /**
-     * @see CassandraProperties#setEventIdCqlParam(String)
-     */
-    private String eventIdCqlParam;
-
-    /**
-     * @see CassandraProperties#setAuditStreamNameCqlParam(String)
-     */
-    private String auditStreamNameCqlParam;
-
-    /**
-     * @see CassandraProperties#setEventJsonCqlParam(String)
-     */
-    private String eventJsonCqlParam;
+    private String insertEventSqlStmt;
 
     /**
      * @see CassandraProperties#setStringEncoding(String)
@@ -76,11 +56,6 @@ public class CassandraProperties {
      * @see CassandraProperties#setEventIdFieldName(String)
      */
     private String eventIdFieldName;
-
-    /**
-     * @see CassandraProperties#setSessionName(String)
-     */
-    private String sessionName;
 
     /**
      * @see CassandraProperties#setAdditionalProperties(Map)
@@ -95,8 +70,8 @@ public class CassandraProperties {
      * <p>
      * You can change the defaults with the setters.
      *
-     * @see org.beiter.michael.eaudit4j.processors.cassandra.propsbuilder.MapBasedCassandraPropsBuilder#buildDefault()
-     * @see org.beiter.michael.eaudit4j.processors.cassandra.propsbuilder.MapBasedCassandraPropsBuilder#build(Map)
+     * @see org.beiter.michael.eaudit4j.common.propsbuilder.MapBasedCommonPropsBuilder#buildDefault()
+     * @see org.beiter.michael.eaudit4j.common.propsbuilder.MapBasedCommonPropsBuilder#build(Map)
      */
     public CassandraProperties() {
 
@@ -116,141 +91,31 @@ public class CassandraProperties {
 
         Validate.notNull(properties, "The validated object 'properties' is null");
 
-        setInsertEventCqlStmt(properties.getInsertEventCqlStmt());
-        setEventIdCqlParam(properties.getEventIdCqlParam());
-        setAuditStreamNameCqlParam(properties.getAuditStreamNameCqlParam());
-        setEventJsonCqlParam(properties.getEventJsonCqlParam());
+        setInsertEventSqlStmt(properties.getInsertEventSqlStmt());
         setStringEncoding(properties.getStringEncoding());
         setEventIdFieldName(properties.getEventIdFieldName());
-        setSessionName(properties.getSessionName());
         setAdditionalProperties(properties.getAdditionalProperties());
     }
 
     /**
-     * @return The event CQL "INSERT" statement (event table)
-     * @see CassandraProperties#setInsertEventCqlStmt(String)
+     * @return The event SQL "INSERT" statement (event table)
+     * @see CassandraProperties#setInsertEventSqlStmt(String)
      */
-    public final String getInsertEventCqlStmt() {
-
-        // no need for defensive copies of String
-
-        return insertEventCqlStmt;
+    public final String getInsertEventSqlStmt() {
+        return insertEventSqlStmt;
     }
 
     /**
-     * Set the CQL statement to insert event records in the event table.
-     * <p>
-     * The CQL statement must be parameterized, and it must use named parameters. It must also explicitly specify the
-     * keyspace as {@code keyspace.tablename}.
+     * Set the SQL statement to insert event records in the event table.
      *
-     * @param insertEventCqlStmt The CQL statement used to insert audit events to the database
-     * @throws NullPointerException     When the {@code insertEventCqlStmt} is {@code null}
-     * @throws IllegalArgumentException When the {@code insertEventCqlStmt} is {@code empty}
+     * @param insertEventSqlStmt The SQL statement used to insert audit events to the database
+     * @throws NullPointerException     When the {@code insertEventSqlStmt} is {@code null}
+     * @throws IllegalArgumentException When the {@code insertEventSqlStmt} is {@code empty}
      */
-    public final void setInsertEventCqlStmt(final String insertEventCqlStmt) {
+    public final void setInsertEventSqlStmt(final String insertEventSqlStmt) {
 
-        Validate.notBlank(insertEventCqlStmt, "The validated character sequence 'insertEventCqlStmt' is null or empty");
-
-        // no need for defensive copies of String
-
-        this.insertEventCqlStmt = insertEventCqlStmt;
-    }
-
-    /**
-     * @return The name of the "event ID" field parameter in the event CQL "INSERT" statement (event table)
-     * @see CassandraProperties#setEventIdCqlParam(String)
-     */
-    public final String getEventIdCqlParam() {
-
-        // no need for defensive copies of String
-
-        return eventIdCqlParam;
-    }
-
-    /**
-     * Set the name of the "event ID" parameter in the event CQL "INSERT" parameterized statement when creating new
-     * event records in the event table.
-     * <p>
-     * The value of this configuration setting must match a named parameter in the CQL "INSERT" parameterized statement.
-     * <p>
-     * Note that this field is <b>not</b> necessarily equal to the column name.
-     *
-     * @param eventIdCqlField The name of the "event ID" field in the event CQL "INSERT" statement (event table)
-     * @throws NullPointerException     When the {@code insertEventCqlStmt} is {@code null}
-     * @throws IllegalArgumentException When the {@code insertEventCqlStmt} is {@code empty}
-     */
-    public final void setEventIdCqlParam(final String eventIdCqlField) {
-
-        Validate.notBlank(insertEventCqlStmt, "The validated character sequence 'eventIdCqlParam' is null or empty");
-
-        // no need for defensive copies of String
-
-        this.eventIdCqlParam = eventIdCqlField;
-    }
-
-    /**
-     * @return The name of the "audit stream name" field parameter in the event CQL "INSERT" statement (event table)
-     * @see CassandraProperties#setAuditStreamNameCqlParam(String)
-     */
-    public final String getAuditStreamNameCqlParam() {
-
-        // no need for defensive copies of String
-
-        return auditStreamNameCqlParam;
-    }
-
-    /**
-     * Set the name of the "audit stream name" parameter in the event CQL "INSERT" parameterized statement when
-     * creating new event records in the event table.
-     * <p>
-     * The value of this configuration setting must match a named parameter in the CQL "INSERT" parameterized statement.
-     * <p>
-     * Note that this field is <b>not</b> necessarily equal to the column name.
-     *
-     * @param auditStreamNameCqlField The name of the "audit stream name" field in the event CQL "INSERT" statement
-     * @throws NullPointerException     When the {@code insertEventCqlStmt} is {@code null}
-     * @throws IllegalArgumentException When the {@code insertEventCqlStmt} is {@code empty}
-     */
-    public final void setAuditStreamNameCqlParam(final String auditStreamNameCqlField) {
-
-        Validate.notBlank(insertEventCqlStmt,
-                "The validated character sequence 'auditStreamNameCqlParam' is null or empty");
-
-        // no need for defensive copies of String
-
-        this.auditStreamNameCqlParam = auditStreamNameCqlField;
-    }
-
-    /**
-     * @return The name of the "event JSON" field parameter in the event CQL "INSERT" statement (event table)
-     * @see CassandraProperties#setEventJsonCqlParam(String)
-     */
-    public final String getEventJsonCqlParam() {
-
-        // no need for defensive copies of String
-
-        return eventJsonCqlParam;
-    }
-
-    /**
-     * Set the name of the "event JSON" parameter in the event CQL "INSERT" parameterized statement when creating new
-     * event records in the event table.
-     * <p>
-     * The value of this configuration setting must match a named parameter in the CQL "INSERT" parameterized statement.
-     * <p>
-     * Note that this field is <b>not</b> necessarily equal to the column name.
-     *
-     * @param eventJsonCqlField The name of the "event JSON" field in the event CQL "INSERT" statement (event table)
-     * @throws NullPointerException     When the {@code insertEventCqlStmt} is {@code null}
-     * @throws IllegalArgumentException When the {@code insertEventCqlStmt} is {@code empty}
-     */
-    public final void setEventJsonCqlParam(final String eventJsonCqlField) {
-
-        Validate.notBlank(insertEventCqlStmt, "The validated character sequence 'eventJsonCqlParam' is null or empty");
-
-        // no need for defensive copies of String
-
-        this.eventJsonCqlParam = eventJsonCqlField;
+        Validate.notBlank(insertEventSqlStmt, "The validated character sequence 'insertEventSqlStmt' is null or empty");
+        this.insertEventSqlStmt = insertEventSqlStmt;
     }
 
     /**
@@ -258,9 +123,6 @@ public class CassandraProperties {
      * @see CassandraProperties#setStringEncoding(String)
      */
     public final String getStringEncoding() {
-
-        // no need for defensive copies of String
-
         return stringEncoding;
     }
 
@@ -274,9 +136,6 @@ public class CassandraProperties {
     public final void setStringEncoding(final String stringEncoding) {
 
         Validate.notBlank(stringEncoding, "The validated character sequence 'stringEncoding' is null or empty");
-
-        // no need for defensive copies of String
-
         this.stringEncoding = stringEncoding;
     }
 
@@ -285,9 +144,6 @@ public class CassandraProperties {
      * @see CassandraProperties#setEventIdFieldName(String)
      */
     public final String getEventIdFieldName() {
-
-        // no need for defensive copies of String
-
         return eventIdFieldName;
     }
 
@@ -297,7 +153,7 @@ public class CassandraProperties {
      * This event ID can be created e.g. with the `org.beiter.michael.eaudit4j.processors.eventid.EventIdProcessor`
      * processor.
      * <p>
-     * Note that the field (referenced in the INSERT CQL statements both for the events table and the search table)
+     * Note that the field (referenced in the INSERT SQL statements both for the events table and the search table)
      * that holds this value must be long enough to accept a value of the maximum length possible for the value
      * configured here.
      *
@@ -306,42 +162,8 @@ public class CassandraProperties {
      * @throws IllegalArgumentException When the {@code eventIdFieldName} is {@code empty}
      */
     public final void setEventIdFieldName(final String eventIdFieldName) {
-
         Validate.notBlank(stringEncoding, "The validated character sequence 'eventIdFieldName' is null or empty");
-
-        // no need for defensive copies of String
-
         this.eventIdFieldName = eventIdFieldName;
-    }
-
-    /**
-     * @return the name of the Cassandra session attribute
-     * @see CassandraProperties#setSessionName(String)
-     */
-    public final String getSessionName() {
-
-        // no need for defensive copies of String
-
-        return sessionName;
-    }
-
-    /**
-     * The name of the Cassandra session attribute in the {@link org.beiter.michael.eaudit4j.common.ProcessingObjects}
-     * of the {@link CassandraProcessor#process(org.beiter.michael.eaudit4j.common.Event, String,
-     * org.beiter.michael.eaudit4j.common.ProcessingObjects)} method (this processor is always connecting to a
-     * Cassandra session that is provided by the integrating application).
-     *
-     * @param sessionName the name of the session attribute
-     * @throws NullPointerException     When the {@code sessionName} is {@code null}
-     * @throws IllegalArgumentException When the {@code sessionName} is {@code empty}
-     */
-    public final void setSessionName(final String sessionName) {
-
-        Validate.notBlank(stringEncoding, "The validated character sequence 'sessionName' is null or empty");
-
-        // no need for defensive copies of String
-
-        this.sessionName = sessionName;
     }
 
     /**
