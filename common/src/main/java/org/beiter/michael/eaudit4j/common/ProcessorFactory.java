@@ -68,7 +68,7 @@ public final class ProcessorFactory {
      * @param className  The name of a class that implements the {@link Processor} interface
      * @param properties The properties to initialize the instance with
      * @return An instance of a class implementing the {@link Processor} interface
-     * @throws FactoryException When the class cannot be instantiated
+     * @throws FactoryException         When the class cannot be instantiated
      * @throws NullPointerException     When the {@code className} or {@code properties} are {@code null}
      * @throws IllegalArgumentException When {@code className} is empty
      */
@@ -135,7 +135,7 @@ public final class ProcessorFactory {
      * @param className  The name of a class that implements the {@link Processor} interface
      * @param properties The properties to initialize the instance with
      * @return An instance of a class implementing the {@link Processor} interface
-     * @throws FactoryException When the class cannot be instantiated
+     * @throws FactoryException         When the class cannot be instantiated
      * @throws NullPointerException     When the {@code className} or {@code properties} are {@code null}
      * @throws IllegalArgumentException When {@code className} is empty
      */
@@ -171,14 +171,7 @@ public final class ProcessorFactory {
     public static void reset() {
 
         // Unset the instance singleton that has been created earlier
-        // The double-check idiom is safe and acceptable here (Bloch, 2nd ed. p 284)
         // null-assignments for de-referencing objects are okay
-        if (processorInstance != null) {
-            synchronized (ProcessorFactory.class) {
-                if (processorInstance != null) {
-                    processorInstance = null;
-                }
-            }
-        }
+        processorInstance = null;
     }
 }
