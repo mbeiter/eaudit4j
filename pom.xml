@@ -253,6 +253,7 @@
         <mavenGpgPluginVersion>1.5</mavenGpgPluginVersion>
         <mavenProjecInfoReportsPluginVersion>2.7</mavenProjecInfoReportsPluginVersion>
         <mavenSitePluginVersion>3.4</mavenSitePluginVersion>
+
         <!-- These properties are overwritten for release builds -->
         <!-- =================================================== -->
         <project.maven.compiler.debug>true</project.maven.compiler.debug>
