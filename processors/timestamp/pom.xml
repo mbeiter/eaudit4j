@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.beiter.michael.eaudit4j</groupId>
         <artifactId>processors</artifactId>
-        <version>1.1</version>
+        <version>1.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 	<groupId>org.beiter.michael.eaudit4j.processors</groupId>
     <artifactId>timestamp</artifactId>
     <packaging>jar</packaging>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
 
     <name>timestamp</name>
     <description>
