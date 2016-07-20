@@ -10,3 +10,4 @@ available configuration options:
   - [Event ID](./processors/eventId/CONFIG.md)
   - [slf4j](./processors/slf4j/CONFIG.md)
   - [JDBC](./processors/jdbc/CONFIG.md)
+  - [Cassandra](./processors/cassandra/CONFIG.md)

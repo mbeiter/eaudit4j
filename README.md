@@ -18,10 +18,31 @@ Extension points in the library include:
 - Custom event attributes
 - Custom audit strategies (e.g. synchronous, asynchronous)
 
-The library includes a few Event implementations, as well as multiple processors, such as:
+The library includes a few Event implementations, as well as multiple processors.
+See the [configuration instructions](CONFIG.md) for an overview on available
+components, features, and configuration options.
 
-- A processor to attach a machine specific identifier to events
-- A processor to log events through slf4j
+## Documentation
+
+* 1.1
+  * [Maven Project Docs](http://mbeiter.github.io/eaudit4j/docs/1.1/)
+  * Java Docs
+    * [Common](http://mbeiter.github.io/eaudit4j/docs/1.1/common/apidocs/index.html)
+    * [Machine ID Processor](http://mbeiter.github.io/eaudit4j/docs/1.1/machineId/apidocs/index.html)
+    * [Timestamp Processor](http://mbeiter.github.io/eaudit4j/docs/1.1/timestamp/apidocs/index.html)
+    * [Event ID Processor](http://mbeiter.github.io/eaudit4j/docs/1.1/eventId/apidocs/index.html)
+    * [slf4j Processor](http://mbeiter.github.io/eaudit4j/docs/1.1/slf4j/apidocs/index.html)
+    * [JDBC Processor](http://mbeiter.github.io/eaudit4j/docs/1.1/jdbc/apidocs/index.html)
+    * [Cassandra Processor](http://mbeiter.github.io/eaudit4j/docs/1.1/cassandra/apidocs/index.html)
+* 1.0
+  * [Maven Project Docs](http://mbeiter.github.io/eaudit4j/docs/1.0/)
+  * Java Docs
+    * [Common](http://mbeiter.github.io/eaudit4j/docs/1.0/common/apidocs/index.html)
+    * [Machine ID Processor](http://mbeiter.github.io/eaudit4j/docs/1.0/machineId/apidocs/index.html)
+    * [Timestamp Processor](http://mbeiter.github.io/eaudit4j/docs/1.0/timestamp/apidocs/index.html)
+    * [Event ID Processor](http://mbeiter.github.io/eaudit4j/docs/1.0/eventId/apidocs/index.html)
+    * [slf4j Processor](http://mbeiter.github.io/eaudit4j/docs/1.0/slf4j/apidocs/index.html)
+    * [JDBC Processor](http://mbeiter.github.io/eaudit4j/docs/1.0/jdbc/apidocs/index.html)
 
 ## Useful Links
 

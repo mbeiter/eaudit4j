@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.beiter.michael.eaudit4j</groupId>
         <artifactId>processors</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.beiter.michael.eaudit4j.processors</groupId>
     <artifactId>cassandra</artifactId>
     <packaging>jar</packaging>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
 
     <name>cassandra</name>
     <description>
