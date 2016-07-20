@@ -42,6 +42,13 @@
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
         </dependency>
+        <dependency>
+            <!-- Cassandra depends on Guava, and
+                 does not pull in the dependency
+                 transitively for some reason -->
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
 
         <!-- Provided dependencies -->
         <dependency>

@@ -296,6 +296,14 @@
                 <artifactId>cassandra-driver-core</artifactId>
                 <version>3.0.0</version>
             </dependency>
+            <dependency>
+                <!-- Cassandra depends on Guava, and
+                     does not pull in the dependency
+                     transitively for some reason -->
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>18.0</version>
+            </dependency>
 
             <!-- Provided dependencies -->
             <dependency>
