@@ -91,7 +91,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>com.hp.audit.percona.PerconaTest</mainClass>
+                            <mainClass>org.beiter.michael.eaudit4j.performance.mysql.MysqlTest</mainClass>
                         </manifest>
                     </archive>
 

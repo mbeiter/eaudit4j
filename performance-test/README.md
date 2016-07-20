@@ -1,7 +1,7 @@
 # Performance Test
 
 ## Performance core
-This module is implemented by class com.hp.audit.Performance. It generates a JMeter JTL
+This module is implemented by class org.beiter.michael.eaudit4j.Performance. It generates a JMeter JTL
 file with performance results.
 
 In order to use, create an instance of Performance class:
@@ -63,7 +63,7 @@ java -DnumThreads=10 -DrumpUpInMilliseconds=1000 -DjtlFile=./perconaTest.jtl -Dm
  -DmaxTestTimeUnit=MINUTES -DmaxWarmUpTime=10 -DmaxWarmUpTimeUnit=SECONDS \
  -DjdbcUrl=jdbc:mysql://192.168.99.100:3306/test -Duser=root -Dpassword=rootPsw \
  -DmaxPoolSize=140 -DmaxStatements=400 -cp auditPerformanceTest-jar-with-dependencies.jar \
- com.hp.audit.percona.PerconaTest
+ org.beiter.michael.eaudit4j.performance.mysql.MysqlTest
 ```
 
 
