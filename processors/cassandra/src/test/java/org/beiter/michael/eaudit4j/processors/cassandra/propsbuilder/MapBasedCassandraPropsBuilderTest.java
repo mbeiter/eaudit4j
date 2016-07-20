@@ -48,17 +48,8 @@ import static org.junit.Assert.assertThat;
 
 public class MapBasedCassandraPropsBuilderTest {
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Additional Properties Tests
-    //   (test the additional properties that are not explicitly named)
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * additionalProperties test: make sure that the additional properties are being set to a new object (i.e. a
-     * defensive copy is being made)
-     */
     @Test
-    public void additionalPropertiesNoSingletonTest() {
+    public void shouldValidateAdditionalPropertiesNoSingleton() {
 
         String key = "some property";
         String value = "some value";
@@ -72,181 +63,42 @@ public class MapBasedCassandraPropsBuilderTest {
         assertThat(error, map, is(not(sameInstance(properties.getAdditionalProperties()))));
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Named Properties Tests
-    //   (test the explicitly named properties)
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * default event INSERT CQL statement test
-     */
     @Test
-    public void defaultInsertEventCqlStmtTest() {
+    public void shouldValidateDefaultInsertEventSqlStmt() {
 
         CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
 
-        String error = "INSERT Event CQL statement does not match expected default value";
-        assertThat(error, properties.getInsertEventCqlStmt(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_INSERT_EVENT_CQL_STMT)));
-        error = "INSERT Event CQL statement does not match expected value";
-        properties.setInsertEventCqlStmt("42");
-        assertThat(error, properties.getInsertEventCqlStmt(), is(equalTo("42")));
+        String error = "INSERT Event SQL statement does not match expected default value";
+        assertThat(error, properties.getInsertEventSqlStmt(),
+                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_INSERT_EVENT_SQL_STMT)));
+        error = "INSERT Event SQL statement  does not match expected value";
+        properties.setInsertEventSqlStmt("42");
+        assertThat(error, properties.getInsertEventSqlStmt(), is(equalTo("42")));
     }
 
-    /**
-     * Event INSERT CQL statement test
-     */
     @Test
-    public void insertEventCqlStmtTest() {
+    public void ShouldValidateInsertEventSqlStmt() {
 
         Map<String, String> map = new HashMap<>();
 
-        map.put(MapBasedCassandraPropsBuilder.KEY_INSERT_EVENT_CQL_STMT, null);
+        map.put(MapBasedCassandraPropsBuilder.KEY_INSERT_EVENT_SQL_STMT, null);
         CassandraProperties properties = MapBasedCassandraPropsBuilder.build(map);
-        String error = "INSERT Event CQL statement does not match expected default value";
-        assertThat(error, properties.getInsertEventCqlStmt(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_INSERT_EVENT_CQL_STMT)));
+        String error = "INSERT Event SQL statement does not match expected default value";
+        assertThat(error, properties.getInsertEventSqlStmt(),
+                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_INSERT_EVENT_SQL_STMT)));
 
-        map.put(MapBasedCassandraPropsBuilder.KEY_INSERT_EVENT_CQL_STMT, "42");
+        map.put(MapBasedCassandraPropsBuilder.KEY_INSERT_EVENT_SQL_STMT, "42");
         properties = MapBasedCassandraPropsBuilder.build(map);
-        error = "INSERT Event CQL statement does not match expected value";
-        assertThat(error, properties.getInsertEventCqlStmt(), is(equalTo("42")));
+        error = "INSERT Event SQL statement does not match expected value";
+        assertThat(error, properties.getInsertEventSqlStmt(), is(equalTo("42")));
 
-        // copy constructor test
         CassandraProperties properties2 = new CassandraProperties(properties);
         error = "copy constructor does not copy field";
-        assertThat(error, properties2.getInsertEventCqlStmt(), is(equalTo("42")));
+        assertThat(error, properties2.getInsertEventSqlStmt(), is(equalTo("42")));
     }
 
-    /**
-     * default event ID CQL param test
-     */
     @Test
-    public void defaultEventIdCqlParamTest() {
-
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
-
-        String error = "Event ID CQL param does not match expected default value";
-        assertThat(error, properties.getEventIdCqlParam(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_EVENT_ID_CQL_PARAM)));
-        error = "Event ID CQL param does not match expected value";
-        properties.setEventIdCqlParam("42");
-        assertThat(error, properties.getEventIdCqlParam(), is(equalTo("42")));
-    }
-
-    /**
-     * Event ID CQL param test
-     */
-    @Test
-    public void eventIdCqlParamTest() {
-
-        Map<String, String> map = new HashMap<>();
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_EVENT_ID_CQL_PARAM, null);
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.build(map);
-        String error = "Event ID CQL param does not match expected default value";
-        assertThat(error, properties.getEventIdCqlParam(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_EVENT_ID_CQL_PARAM)));
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_EVENT_ID_CQL_PARAM, "42");
-        properties = MapBasedCassandraPropsBuilder.build(map);
-        error = "Event ID CQL param does not match expected value";
-        assertThat(error, properties.getEventIdCqlParam(), is(equalTo("42")));
-
-        // copy constructor test
-        CassandraProperties properties2 = new CassandraProperties(properties);
-        error = "copy constructor does not copy field";
-        assertThat(error, properties2.getEventIdCqlParam(), is(equalTo("42")));
-    }
-
-    /**
-     * default audit stream CQL param test
-     */
-    @Test
-    public void defaultAuditStreamCqlParamTest() {
-
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
-
-        String error = "Audit stream CQL param does not match expected default value";
-        assertThat(error, properties.getAuditStreamNameCqlParam(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_AUDIT_STREAM_NAME_CQL_PARAM)));
-        error = "Audit stream CQL param does not match expected value";
-        properties.setAuditStreamNameCqlParam("42");
-        assertThat(error, properties.getAuditStreamNameCqlParam(), is(equalTo("42")));
-    }
-
-    /**
-     * Audit stream CQL param test
-     */
-    @Test
-    public void auditStreamCqlParamTest() {
-
-        Map<String, String> map = new HashMap<>();
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_AUDIT_STREAM_NAME_CQL_PARAM, null);
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.build(map);
-        String error = "Audit stream CQL param does not match expected default value";
-        assertThat(error, properties.getAuditStreamNameCqlParam(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_AUDIT_STREAM_NAME_CQL_PARAM)));
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_AUDIT_STREAM_NAME_CQL_PARAM, "42");
-        properties = MapBasedCassandraPropsBuilder.build(map);
-        error = "Audit stream CQL param does not match expected value";
-        assertThat(error, properties.getAuditStreamNameCqlParam(), is(equalTo("42")));
-
-        // copy constructor test
-        CassandraProperties properties2 = new CassandraProperties(properties);
-        error = "copy constructor does not copy field";
-        assertThat(error, properties2.getAuditStreamNameCqlParam(), is(equalTo("42")));
-    }
-
-    /**
-     * default event Json CQL param test
-     */
-    @Test
-    public void defaultEventJsonCqlParamTest() {
-
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
-
-        String error = "Event Json CQL param does not match expected default value";
-        assertThat(error, properties.getEventJsonCqlParam(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_EVENT_JSON_CQL_PARAM)));
-        error = "Event Json CQL param does not match expected value";
-        properties.setEventJsonCqlParam("42");
-        assertThat(error, properties.getEventJsonCqlParam(), is(equalTo("42")));
-    }
-
-    /**
-     * Event Json CQL param test
-     */
-    @Test
-    public void eventJsonCqlParamTest() {
-
-        Map<String, String> map = new HashMap<>();
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_EVENT_JSON_CQL_PARAM, null);
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.build(map);
-        String error = "Event Json CQL param does not match expected default value";
-        assertThat(error, properties.getEventJsonCqlParam(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_EVENT_JSON_CQL_PARAM)));
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_EVENT_JSON_CQL_PARAM, "42");
-        properties = MapBasedCassandraPropsBuilder.build(map);
-        error = "Event Json CQL param does not match expected value";
-        assertThat(error, properties.getEventJsonCqlParam(), is(equalTo("42")));
-
-        // copy constructor test
-        CassandraProperties properties2 = new CassandraProperties(properties);
-        error = "copy constructor does not copy field";
-        assertThat(error, properties2.getEventJsonCqlParam(), is(equalTo("42")));
-    }
-
-    /**
-     * default string encoding test
-     */
-    @Test
-    public void defaultStringEncodingTest() {
+    public void shouldValidateDefaultStringEncodingTest() {
 
         CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
 
@@ -258,11 +110,8 @@ public class MapBasedCassandraPropsBuilderTest {
         assertThat(error, properties.getStringEncoding(), is(equalTo("42")));
     }
 
-    /**
-     * string encoding test
-     */
     @Test
-    public void stringEncodingTest() {
+    public void shouldValidateStringEncodingTest() {
 
         Map<String, String> map = new HashMap<>();
 
@@ -277,17 +126,14 @@ public class MapBasedCassandraPropsBuilderTest {
         error = "String encoding does not match expected value";
         assertThat(error, properties.getStringEncoding(), is(equalTo("42")));
 
-        // copy constructor test
         CassandraProperties properties2 = new CassandraProperties(properties);
         error = "copy constructor does not copy field";
         assertThat(error, properties2.getStringEncoding(), is(equalTo("42")));
     }
 
-    /**
-     * default event ID field name test
-     */
+
     @Test
-    public void defaultEventIdFieldNameTest() {
+    public void shouldValidateDefaultEventIdFieldNameTest() {
 
         CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
 
@@ -299,11 +145,9 @@ public class MapBasedCassandraPropsBuilderTest {
         assertThat(error, properties.getEventIdFieldName(), is(equalTo("42")));
     }
 
-    /**
-     * event ID field name test
-     */
+
     @Test
-    public void eventIdFieldNameTest() {
+    public void shouldValidateEventIdFieldNameTest() {
 
         Map<String, String> map = new HashMap<>();
 
@@ -318,50 +162,8 @@ public class MapBasedCassandraPropsBuilderTest {
         error = "Event ID field name does not match expected value";
         assertThat(error, properties.getEventIdFieldName(), is(equalTo("42")));
 
-        // copy constructor test
         CassandraProperties properties2 = new CassandraProperties(properties);
         error = "copy constructor does not copy field";
         assertThat(error, properties2.getEventIdFieldName(), is(equalTo("42")));
-    }
-
-    /**
-     * default Cassandra session name test
-     */
-    @Test
-    public void defaultSessionNameTest() {
-
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.buildDefault();
-
-        String error = "Session name does not match expected default value";
-        assertThat(error, properties.getSessionName(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_SESSION_NAME)));
-        error = "Session name does not match expected value";
-        properties.setSessionName("42");
-        assertThat(error, properties.getSessionName(), is(equalTo("42")));
-    }
-
-    /**
-     * Cassandra session name test
-     */
-    @Test
-    public void sessionNameTest() {
-
-        Map<String, String> map = new HashMap<>();
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_SESSION_NAME, null);
-        CassandraProperties properties = MapBasedCassandraPropsBuilder.build(map);
-        String error = "Session name does not match expected default value";
-        assertThat(error, properties.getSessionName(),
-                is(equalTo(MapBasedCassandraPropsBuilder.DEFAULT_SESSION_NAME)));
-
-        map.put(MapBasedCassandraPropsBuilder.KEY_SESSION_NAME, "42");
-        properties = MapBasedCassandraPropsBuilder.build(map);
-        error = "Session name does not match expected value";
-        assertThat(error, properties.getSessionName(), is(equalTo("42")));
-
-        // copy constructor test
-        CassandraProperties properties2 = new CassandraProperties(properties);
-        error = "copy constructor does not copy field";
-        assertThat(error, properties2.getSessionName(), is(equalTo("42")));
     }
 }

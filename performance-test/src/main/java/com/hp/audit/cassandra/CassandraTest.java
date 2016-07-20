@@ -58,13 +58,6 @@ import static com.hp.audit.PropertiesUtil.getIntProperty;
 
 public class CassandraTest {
     public static final String EVENT_ID_FIELD_NAME = "eventId";
-    private static final String EVENT_ID_CQL_FIELD = "eventId";
-    private static final String AUDIT_STREAM_NAME_CQL_FIELD = "auditStreamName";
-    private static final String EVENT_JSON_CQL_FIELD = "eventJson";
-    private static final String CASSANDRA_KEYSPACE = "audit";
-    private static final String INSERT_EVENT_CQL_STMT =
-            "INSERT INTO " + CASSANDRA_KEYSPACE + ".events (eventId, auditStream, eventJson) VALUES (:"
-                    + EVENT_ID_CQL_FIELD + ", :" + AUDIT_STREAM_NAME_CQL_FIELD + ", :" + EVENT_JSON_CQL_FIELD + ")";
 
     private static int numThreads = getIntProperty(NUM_THREADS, 10);
     private static int numLoops = getIntProperty(NUM_LOOPS, Integer.MAX_VALUE);
@@ -122,15 +115,12 @@ public class CassandraTest {
         // the Processor configuration
         props = new HashMap<>();
         processingObjects = new ProcessingObjects();
-        processingObjects.add("mySession", CassandraServerUtil.getCluster().newSession());
+        processingObjects.add(MapBasedCassandraPropsBuilder.KEY_CASSANDRA_CONNECTION_SESSION,
+                CassandraServerUtil.getCluster().newSession());
 
-        props.put(MapBasedCassandraPropsBuilder.KEY_SESSION_NAME, "mySession");
         props.put(MapBasedCassandraPropsBuilder.KEY_EVENT_ID_FIELD_NAME, EVENT_ID_FIELD_NAME);
-
-        props.put(MapBasedCassandraPropsBuilder.KEY_EVENT_ID_CQL_PARAM, EVENT_ID_CQL_FIELD);
-        props.put(MapBasedCassandraPropsBuilder.KEY_AUDIT_STREAM_NAME_CQL_PARAM, AUDIT_STREAM_NAME_CQL_FIELD);
-        props.put(MapBasedCassandraPropsBuilder.KEY_EVENT_JSON_CQL_PARAM, EVENT_JSON_CQL_FIELD);
-        props.put(MapBasedCassandraPropsBuilder.KEY_INSERT_EVENT_CQL_STMT, INSERT_EVENT_CQL_STMT);
+        props.put(MapBasedCassandraPropsBuilder.KEY_INSERT_EVENT_SQL_STMT,
+                "INSERT INTO audit.events (eventId, auditStream, eventJson) VALUES (?, ?, ?)");
     }
 
     private Supplier<Event> supplier() {

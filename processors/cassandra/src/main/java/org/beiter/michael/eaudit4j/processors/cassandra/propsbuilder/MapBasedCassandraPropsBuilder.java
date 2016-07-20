@@ -60,29 +60,10 @@ public final class MapBasedCassandraPropsBuilder {
      */
     private static final Logger LOG = LoggerFactory.getLogger(MapBasedCassandraPropsBuilder.class);
 
-    // #################
-    // # Default values
-    // #################
-
     /**
-     * @see CassandraProperties#setInsertEventCqlStmt(String)
+     * @see CassandraProperties#setInsertEventSqlStmt(String)
      */
-    public static final String DEFAULT_INSERT_EVENT_CQL_STMT = "TODO - CONFIGURE ME!";
-
-    /**
-     * @see CassandraProperties#setEventIdCqlParam(String)
-     */
-    public static final String DEFAULT_EVENT_ID_CQL_PARAM = "TODO - CONFIGURE ME!";
-
-    /**
-     * @see CassandraProperties#setAuditStreamNameCqlParam(String)
-     */
-    public static final String DEFAULT_AUDIT_STREAM_NAME_CQL_PARAM = "TODO - CONFIGURE ME!";
-
-    /**
-     * @see CassandraProperties#setEventJsonCqlParam(String)
-     */
-    public static final String DEFAULT_EVENT_JSON_CQL_PARAM = "TODO - CONFIGURE ME!";
+    public static final String DEFAULT_INSERT_EVENT_SQL_STMT = "TODO - CONFIGURE ME!";
 
     /**
      * @see CassandraProperties#setStringEncoding(String)
@@ -95,33 +76,9 @@ public final class MapBasedCassandraPropsBuilder {
     public static final String DEFAULT_EVENT_ID_FIELD_NAME = "TODO - CONFIGURE ME!";
 
     /**
-     * @see CassandraProperties#setSessionName(String)
+     * @see CassandraProperties#setInsertEventSqlStmt(String)
      */
-    public static final String DEFAULT_SESSION_NAME = "TODO - CONFIGURE ME!";
-
-    // #####################
-    // # Configuration Keys
-    // #####################
-
-    /**
-     * @see CassandraProperties#setInsertEventCqlStmt(String)
-     */
-    public static final String KEY_INSERT_EVENT_CQL_STMT = "audit.processor.cassandra.insertEventCqlStmt";
-
-    /**
-     * @see CassandraProperties#setEventIdCqlParam(String)
-     */
-    public static final String KEY_EVENT_ID_CQL_PARAM = "audit.processor.cassandra.eventIdCqlParam";
-
-    /**
-     * @see CassandraProperties#setAuditStreamNameCqlParam(String)
-     */
-    public static final String KEY_AUDIT_STREAM_NAME_CQL_PARAM = "audit.processor.cassandra.auditStreamNameCqlParam";
-
-    /**
-     * @see CassandraProperties#setEventJsonCqlParam(String)
-     */
-    public static final String KEY_EVENT_JSON_CQL_PARAM = "audit.processor.cassandra.eventJsonCqlParam";
+    public static final String KEY_INSERT_EVENT_SQL_STMT = "audit.processor.cassandra.insertEventSqlStmt";
 
     /**
      * @see CassandraProperties#setStringEncoding(String)
@@ -133,10 +90,7 @@ public final class MapBasedCassandraPropsBuilder {
      */
     public static final String KEY_EVENT_ID_FIELD_NAME = "audit.processor.cassandra.eventIdFieldName";
 
-    /**
-     * @see CassandraProperties#setSessionName(String)
-     */
-    public static final String KEY_SESSION_NAME = "audit.processor.cassandra.sessionName";
+    public static final String KEY_CASSANDRA_CONNECTION_SESSION = "audit.processor.cassandra.session";
 
     /**
      * A private constructor to prevent instantiation of this class
@@ -173,40 +127,13 @@ public final class MapBasedCassandraPropsBuilder {
         Validate.notNull(properties, "The validated object 'value' is null");
 
         final CassandraProperties cassandraProperties = new CassandraProperties();
-        String tmp = properties.get(KEY_INSERT_EVENT_CQL_STMT);
+        String tmp = properties.get(KEY_INSERT_EVENT_SQL_STMT);
         if (StringUtils.isNotEmpty(tmp)) {
-            cassandraProperties.setInsertEventCqlStmt(tmp);
-            logValue(KEY_INSERT_EVENT_CQL_STMT, tmp);
+            cassandraProperties.setInsertEventSqlStmt(tmp);
+            logValue(KEY_INSERT_EVENT_SQL_STMT, tmp);
         } else {
-            cassandraProperties.setInsertEventCqlStmt(DEFAULT_INSERT_EVENT_CQL_STMT);
-            logDefault(KEY_INSERT_EVENT_CQL_STMT, DEFAULT_INSERT_EVENT_CQL_STMT);
-        }
-
-        tmp = properties.get(KEY_EVENT_ID_CQL_PARAM);
-        if (StringUtils.isNotEmpty(tmp)) {
-            cassandraProperties.setEventIdCqlParam(tmp);
-            logValue(KEY_EVENT_ID_CQL_PARAM, tmp);
-        } else {
-            cassandraProperties.setEventIdCqlParam(DEFAULT_EVENT_ID_CQL_PARAM);
-            logDefault(KEY_EVENT_ID_CQL_PARAM, DEFAULT_EVENT_ID_CQL_PARAM);
-        }
-
-        tmp = properties.get(KEY_AUDIT_STREAM_NAME_CQL_PARAM);
-        if (StringUtils.isNotEmpty(tmp)) {
-            cassandraProperties.setAuditStreamNameCqlParam(tmp);
-            logValue(KEY_AUDIT_STREAM_NAME_CQL_PARAM, tmp);
-        } else {
-            cassandraProperties.setAuditStreamNameCqlParam(DEFAULT_AUDIT_STREAM_NAME_CQL_PARAM);
-            logDefault(KEY_AUDIT_STREAM_NAME_CQL_PARAM, DEFAULT_AUDIT_STREAM_NAME_CQL_PARAM);
-        }
-
-        tmp = properties.get(KEY_EVENT_JSON_CQL_PARAM);
-        if (StringUtils.isNotEmpty(tmp)) {
-            cassandraProperties.setEventJsonCqlParam(tmp);
-            logValue(KEY_EVENT_JSON_CQL_PARAM, tmp);
-        } else {
-            cassandraProperties.setEventJsonCqlParam(DEFAULT_EVENT_JSON_CQL_PARAM);
-            logDefault(KEY_EVENT_JSON_CQL_PARAM, DEFAULT_EVENT_JSON_CQL_PARAM);
+            cassandraProperties.setInsertEventSqlStmt(DEFAULT_INSERT_EVENT_SQL_STMT);
+            logDefault(KEY_INSERT_EVENT_SQL_STMT, DEFAULT_INSERT_EVENT_SQL_STMT);
         }
 
         tmp = properties.get(KEY_STRING_ENCODING);
@@ -225,15 +152,6 @@ public final class MapBasedCassandraPropsBuilder {
         } else {
             cassandraProperties.setEventIdFieldName(DEFAULT_EVENT_ID_FIELD_NAME);
             logDefault(KEY_EVENT_ID_FIELD_NAME, DEFAULT_EVENT_ID_FIELD_NAME);
-        }
-
-        tmp = properties.get(KEY_SESSION_NAME);
-        if (StringUtils.isNotEmpty(tmp)) {
-            cassandraProperties.setSessionName(tmp);
-            logValue(KEY_SESSION_NAME, tmp);
-        } else {
-            cassandraProperties.setSessionName(DEFAULT_SESSION_NAME);
-            logDefault(KEY_SESSION_NAME, DEFAULT_SESSION_NAME);
         }
 
         // set the additional properties, preserving the originally provided properties
