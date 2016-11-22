@@ -138,7 +138,7 @@ public class EventIdProperties {
      * Set the field name to be used when storing the event ID in audit events
      *
      * @param eventFieldName The field name to store the event ID in
-     * @throws NullPointerException When the {@code eventFieldName} is {@code null}
+     * @throws NullPointerException     When the {@code eventFieldName} is {@code null}
      * @throws IllegalArgumentException When the {@code eventFieldName} is {@code empty}
      */
     public final void setEventFieldName(final String eventFieldName) {
@@ -162,6 +162,7 @@ public class EventIdProperties {
             return new ConcurrentHashMap<>();
         } else {
             final Map<String, String> tempMap = new ConcurrentHashMap<>();
+            // putAll() is safe here, because we always apply it on a ConcurrentHashMap
             tempMap.putAll(additionalProperties);
 
             return tempMap;
@@ -185,10 +186,22 @@ public class EventIdProperties {
 
         // create a defensive copy of the map and all its properties
         if (additionalProperties == null) {
+            // create a new (empty) properties map if the provided parameter was null
             this.additionalProperties = new ConcurrentHashMap<>();
         } else {
+            // create a defensive copy of the map and all its properties
+            // the code looks a little more complicated than a simple "putAll()", but it catches situations
+            // where a Map is provided that supports null values (e.g. a HashMap) vs Map implementations
+            // that do not (e.g. ConcurrentHashMap).
             this.additionalProperties = new ConcurrentHashMap<>();
-            this.additionalProperties.putAll(additionalProperties);
+            for (final Map.Entry<String, String> entry : additionalProperties.entrySet()) {
+                final String key = entry.getKey();
+                final String value = entry.getValue();
+
+                if (value != null) {
+                    this.additionalProperties.put(key, value);
+                }
+            }
         }
     }
 }
