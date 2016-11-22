@@ -279,7 +279,7 @@ public final class MapBasedCommonPropsBuilder {
     // CHECKSTYLE:ON
     public static CommonProperties build(final Map<String, String> properties) {
 
-        Validate.notNull(properties, "The validated object 'value' is null");
+        Validate.notNull(properties, "The validated object 'properties' is null");
 
         final CommonProperties commonProps = new CommonProperties();
         String tmp = properties.get(KEY_AUDIT_CLASS_NAME);
