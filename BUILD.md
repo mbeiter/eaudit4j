@@ -30,7 +30,7 @@ Checkout the master branch from GitHub to a first directory:
 
 or
 
-	git clone https://github.com/mbeiter/eaudit4j.git
+    git clone https://github.com/mbeiter/eaudit4j.git
 
 Checkout the master branch from GitHub to a second directory (optional, but handy to modify the GitHub pages without 
 switching branches):
@@ -39,7 +39,7 @@ switching branches):
 
 or
 
-	git clone https://github.com/mbeiter/eaudit4j.git eaudit4j-site -b gh-pages
+    git clone https://github.com/mbeiter/eaudit4j.git eaudit4j-site -b gh-pages
 
 For first-time git users: configure a default identity for git (stored in ~/.gitconfig):
 
@@ -74,7 +74,6 @@ To create the project license file
 - Use the audit workbench, and create a new project in "advanced" mode:
     - Set the target SDK to 1.7
     - Exclude:
-         - The build-tools project 
          - All unit test directories
          - All target directories
     - Include:
