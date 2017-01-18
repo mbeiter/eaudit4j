@@ -122,9 +122,6 @@ See (Contribute.md) for hints on how to commit and what to include in commit mes
     mvn versions:set -DnewVersion=1.0
     mvn versions:commit
 
-**Note** that the version setting will not affect the `build-tools` component, because it is not part of the main Maven 
-project! It is intentionally kept separate to allow referencing it as a build properties root from within the project.
-
 ### Build the release bits and site, and push the release bits to Maven Central staging
 
 Using the "release" profile is mandatory, and the Fortify 'Quick View' must be clean.
