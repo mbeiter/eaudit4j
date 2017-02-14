@@ -1,0 +1,46 @@
+version: "2"
+services:
+
+  cassandra1:
+    image: cassandra:2.2.5
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.11
+    environment:
+      - CASSANDRA_CLUSTER_NAME=rdr_dc1_cluster
+      - CASSANDRA_DC=rdr-agent_local_consul
+      - CASSANDRA_RACK=rack1
+    ports:
+      - "9042:9042"
+      - "7000:7000"
+
+
+  mysql:
+    image: mysql:5.7
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.14
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPsw
+      MYSQL_DATABASE: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpsw
+      MAX_CONNECTIONS: 300
+    ports:
+      - "3306:3306"
+
+networks:
+  app_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
+      - subnet: 2001:3984:3989::/64
+        gateway: 2001:3984:3989::1
