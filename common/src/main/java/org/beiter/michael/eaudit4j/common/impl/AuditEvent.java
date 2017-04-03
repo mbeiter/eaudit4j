@@ -2,7 +2,7 @@
  * #%L
  * This file is part of eAudit4j, a library for creating pluggable auditing solutions.
  * %%
- * Copyright (C) 2015 - 2016 Michael Beiter <michael@beiter.org>
+ * Copyright (C) 2015 - 2017 Michael Beiter <michael@beiter.org>
  * %%
  * All rights reserved.
  * .
