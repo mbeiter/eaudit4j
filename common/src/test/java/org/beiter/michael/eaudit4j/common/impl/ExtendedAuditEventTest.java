@@ -2,7 +2,7 @@
  * #%L
  * This file is part of eAudit4j, a library for creating pluggable auditing solutions.
  * %%
- * Copyright (C) 2015 - 2016 Michael Beiter <michael@beiter.org>
+ * Copyright (C) 2015 - 2017 Michael Beiter <michael@beiter.org>
  * %%
  * All rights reserved.
  * .
@@ -43,7 +43,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
-import static org.hamcrest.Matchers.*;
+import static org.apache.commons.lang3.StringEscapeUtils.escapeJson;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
@@ -555,6 +558,29 @@ public class ExtendedAuditEventTest {
         extendedEvent.setResult("result_value".toCharArray());
 
         String expectedJson = "{\"version\":\"1.0\",\"fields\":{\"actor\":\"actor_value\",\"result\":\"result_value\"}}";
+
+        String json = String.valueOf(extendedEvent.toJson());
+
+        String error = "JSON serialization returns an incorrect JSON representation";
+        assertThat(error, json, is(equalTo(expectedJson)));
+    }
+
+    /**
+     * Get a serialized representation of an ExtendedAuditEvent when the field value is a Json String,
+     * and make sure the JSON is correct
+     */
+    @Test
+    public void auditEventToJsonFieldTest() {
+
+        CommonProperties properties = MapBasedCommonPropsBuilder.buildDefault();
+        ExtendedEvent extendedEvent = new ExtendedAuditEvent(properties);
+
+        String actor = "{\"application\":\"test\"}";
+        extendedEvent.setActor(actor.toCharArray());
+        extendedEvent.setResult("result_value".toCharArray());
+
+        String expectedJson = "{\"version\":\"1.0\",\"fields\":{\"actor\":\"" + escapeJson(actor)
+            + "\",\"result\":\"result_value\"}}";
 
         String json = String.valueOf(extendedEvent.toJson());
 

@@ -2,7 +2,7 @@
  * #%L
  * This file is part of eAudit4j, a library for creating pluggable auditing solutions.
  * %%
- * Copyright (C) 2015 - 2016 Michael Beiter <michael@beiter.org>
+ * Copyright (C) 2015 - 2017 Michael Beiter <michael@beiter.org>
  * %%
  * All rights reserved.
  * .
@@ -34,14 +34,12 @@ package org.beiter.michael.eaudit4j.common.impl;
 
 import org.apache.commons.lang3.Validate;
 import org.beiter.michael.array.Cleanser;
-import org.beiter.michael.array.Converter;
 import org.beiter.michael.eaudit4j.common.Event;
 import org.beiter.michael.eaudit4j.common.Field;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.CharBuffer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,6 +47,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static java.nio.charset.Charset.forName;
+import static org.apache.commons.lang3.StringEscapeUtils.escapeJson;
 
 /**
  * This class implements an {@link Event}.
@@ -65,6 +66,11 @@ public class AuditEvent
      * The record format version implemented by this {@link Event} implementation's JSON serializer
      */
     public static final String FORMAT_VERSION = "1.0";
+
+    /**
+     * Factor to multiply the char buffer size to guarantee that will be fit all the fields including the char escapes
+     */
+    private static final int ESCAPE_FACTOR = 2;
 
     /**
      * The fields that comprise a particular audit event.
@@ -289,7 +295,7 @@ public class AuditEvent
             // this gives us the length of the byte representation, which may be somewhat longer
             // than the char representation. It is accurate enough though for what we need here,
             // and it is always longer (never shorter), which is key.
-            minSize += entry.getValue().getValue().length;
+            minSize += ESCAPE_FACTOR * entry.getValue().getValue().length;
         }
 
         final CharBuffer charBuffer = CharBuffer.allocate(minSize);
@@ -305,7 +311,7 @@ public class AuditEvent
             charBuffer.put("\"");
             charBuffer.put(entry.getKey());
             charBuffer.put("\":\"");
-            charBuffer.put(Converter.toChars(entry.getValue().getValue(), encoding));
+            charBuffer.put(escapeJson(new String(entry.getValue().getValue(), forName(encoding))));
             charBuffer.put("\"");
             firstEntry = false;
         }
